@@ -1,0 +1,32 @@
+<div class="course-list-container">
+  <h2>Available Courses</h2>
+
+  @if (loading$ | async) {
+    <div class="loading-spinner">Loading courses...</div>
+  }
+
+  @if (error$ | async; as error) {
+    <div class="error-message">Error loading courses: {{ error }}</div>
+  }
+
+  <div class="course-grid" *ngIf="enrolledCourseIds$ | async as enrolledIds">
+    @for (course of courses$ | async; track course.id) {
+      <div class="course-item">
+        <app-course-card
+          [course]="course"
+          [isEnrolled]="isEnrolled(course.id, enrolledIds)"
+          (enrollRequested)="onEnrollRequested($event)">
+        </app-course-card>
+
+        @if ((selectedCourseId$ | async) === course.id) {
+          <app-enrollment-form
+            [courseId]="course.id"
+            [loading]="(enrollmentLoading$ | async) ?? false"
+            (enroll)="onEnroll($event)"
+            (cancel)="onCancelEnrollment()">
+          </app-enrollment-form>
+        }
+      </div>
+    }
+  </div>
+</div>

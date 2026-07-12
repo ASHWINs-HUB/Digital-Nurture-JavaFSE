@@ -1,0 +1,28 @@
+<div class="profile-container">
+  <h2>Student Profile</h2>
+  
+  <div class="stats">
+    <p><strong>Total Enrollments:</strong> {{ enrollmentCount$ | async }}</p>
+  </div>
+
+  <h3>My Courses</h3>
+  @if ((enrollmentCount$ | async) === 0) {
+    <p class="empty-state">You have not enrolled in any courses yet.</p>
+  } @else {
+    <ul class="enrollment-list">
+      @for (enrollment of enrollments$ | async; track enrollment.id) {
+        <li class="enrollment-item">
+          <div class="enrollment-header">
+            <h4>Course ID: {{ enrollment.courseId }}</h4>
+            <span class="status">{{ enrollment.status }}</span>
+          </div>
+          <p><strong>Enrolled At:</strong> {{ enrollment.enrolledAt | date }}</p>
+          <p><strong>Student Name:</strong> {{ enrollment.studentName }}</p>
+          @if (enrollment.notes) {
+            <p><strong>Notes:</strong> {{ enrollment.notes }}</p>
+          }
+        </li>
+      }
+    </ul>
+  }
+</div>

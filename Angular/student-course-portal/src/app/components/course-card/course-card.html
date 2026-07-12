@@ -1,0 +1,47 @@
+<div class="course-card">
+  <div class="course-header">
+    <h3>{{ course.name | titleCase }}</h3>
+    <span class="course-code">{{ course.code }}</span>
+  </div>
+  
+  <div class="course-details">
+    <p><strong>Credits:</strong> {{ course.credits }}</p>
+    <p><strong>Instructor:</strong> {{ course.instructor }}</p>
+    <p><strong>Duration:</strong> {{ course.duration }}</p>
+    <p><strong>Category:</strong> {{ course.category }}</p>
+  </div>
+
+  <p class="course-description">{{ course.body }}</p>
+
+  <div class="course-footer">
+    <div class="price">{{ course.price | currency:'INR' }}</div>
+    <div class="status" [ngStyle]="getStatusStyle()">
+      @switch (course.status) {
+        @case ('active') {
+          <span>Available</span>
+        }
+        @case ('completed') {
+          <span>Completed</span>
+        }
+        @case ('pending') {
+          <span>Coming Soon</span>
+        }
+        @default {
+          <span>Unknown</span>
+        }
+      }
+    </div>
+  </div>
+
+  <div class="actions">
+    @if (isEnrolled) {
+      <button disabled class="btn-enrolled">Enrolled</button>
+    } @else {
+      <button 
+        (click)="enrollRequested.emit(course.id)" 
+        [disabled]="course.status !== 'active'">
+        Enroll Now
+      </button>
+    }
+  </div>
+</div>

@@ -1,0 +1,16 @@
+13:44:07.166 [main] ERROR com.example.logging.LoggingExample - This is an error message
+13:44:07.176 [main] WARN  com.example.logging.LoggingExample - This is a warning message
+13:44:30.287 [main] ERROR com.example.logging.LoggingExample - This is an error message
+13:44:30.295 [main] WARN  com.example.logging.LoggingExample - This is a warning message
+13:44:34.870 [main] ERROR com.example.logging.LoggingExample - This is an error message
+13:44:34.872 [main] WARN  com.example.logging.LoggingExample - This is a warning message
+13:44:49.584 [main] ERROR com.example.logging.LoggingExample - This is an error message
+13:44:49.589 [main] WARN  com.example.logging.LoggingExample - This is a warning message
+13:45:09.970 [main] INFO  c.e.logging.ParameterizedLogging - Student Name: Ashwin
+13:45:09.980 [main] INFO  c.e.logging.ParameterizedLogging - Age: 20
+13:45:09.980 [main] INFO  c.e.logging.ParameterizedLogging - Marks: 89.5
+13:45:09.980 [main] INFO  c.e.logging.ParameterizedLogging - Student Ashwin scored 89.5
+13:45:41.491 [main] DEBUG com.example.logging.AppenderLogging - Debug Message
+13:45:41.497 [main] INFO  com.example.logging.AppenderLogging - Information Message
+13:45:41.497 [main] WARN  com.example.logging.AppenderLogging - Warning Message
+13:45:41.497 [main] ERROR com.example.logging.AppenderLogging - Error Message

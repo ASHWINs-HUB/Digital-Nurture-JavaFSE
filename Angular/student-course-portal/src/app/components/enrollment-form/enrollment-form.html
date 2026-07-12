@@ -1,0 +1,34 @@
+<div class="form-container">
+  <h3>Enroll in Course</h3>
+  <form [formGroup]="enrollmentForm" (ngSubmit)="onSubmit()">
+    
+    <div class="form-group">
+      <label for="studentName">Full Name *</label>
+      <input id="studentName" type="text" formControlName="studentName" placeholder="John Doe">
+      @if (enrollmentForm.get('studentName')?.invalid && enrollmentForm.get('studentName')?.touched) {
+        <div class="error">Valid name is required.</div>
+      }
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email Address *</label>
+      <input id="email" type="email" formControlName="email" placeholder="john@example.com">
+      @if (enrollmentForm.get('email')?.invalid && enrollmentForm.get('email')?.touched) {
+        <div class="error">Valid email is required.</div>
+      }
+    </div>
+
+    <div class="form-group">
+      <label for="notes">Additional Notes</label>
+      <textarea id="notes" formControlName="notes" rows="3" placeholder="Any special requirements?"></textarea>
+    </div>
+
+    <div class="actions">
+      <button type="button" class="btn-cancel" (click)="onCancel()" [disabled]="loading">Cancel</button>
+      <button type="submit" class="btn-submit" [disabled]="enrollmentForm.invalid || loading">
+        {{ loading ? 'Enrolling...' : 'Confirm Enrollment' }}
+      </button>
+    </div>
+
+  </form>
+</div>

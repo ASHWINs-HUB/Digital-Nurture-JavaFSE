@@ -1,0 +1,18 @@
+<header class="app-header">
+  <div class="logo">
+    <h1><a routerLink="/">Student Course Portal</a></h1>
+  </div>
+  <nav class="nav-links">
+    <a routerLink="/courses" routerLinkActive="active">Courses</a>
+    <a routerLink="/profile" routerLinkActive="active">My Profile</a>
+  </nav>
+</header>
+
+<main class="app-main">
+  @if (loadingService.isLoading$ | async) {
+    <div class="global-loader">
+      <div class="spinner"></div>
+    </div>
+  }
+  <router-outlet></router-outlet>
+</main>
