@@ -1,0 +1,13 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 20px;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+h1 {
+    margin-left: 10px;
+}
